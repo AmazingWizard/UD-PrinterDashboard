@@ -17,8 +17,9 @@ $SNMP = new-object -ComObject olePrn.OleSNMP
 # You can put a | Where-Object type filter here to restrict which printers get displayed in the dashboard
 $All_Printers = get-printer -ComputerName $Config.PrintServer
 
-
-[array] $Printers = @()
+# Use an arrayList instead of an array. You can use .Add() and .Remove() methods on it.
+# Standard arrays rebuild the ENTIRE array each time you add, performance nightmare when dealing with many objects
+ $Printers = New-Object System.Collections.ArrayList
 
 foreach ($Printer in $All_Printers) {
     $Address = $Printer.PortName
@@ -67,7 +68,7 @@ foreach ($Printer in $All_Printers) {
         }
     }
 
-    $Printers += $PrinterData
+    $Printers.Add($PrinterData)
 
     $SNMP.Close()
 }
