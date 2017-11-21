@@ -36,6 +36,30 @@ Start-UDDashboard -port $i -Content {
                 }
             }
         }
+
+        New-UDRow {
+            New-UDColumn -Size 3 {
+                New-UDGrid -Title "Lowest Black Toner" -Headers @("Name", "Percent Left") -Properties @("Name", "Toner.Black") -AutoRefresh -RefreshInterval 60 -BackgroundColor "#1d1e21" -FontColor "#eaeaea" -Endpoint {
+                    $Printers | Sort-Object {$_.Toner.Black} | Select-Object -First 5 | Out-UDGridData
+                }
+            }
+            New-UDColumn -Size 3 {
+                New-UDGrid -Title "Lowest Cyan Toner" -Headers @("Name", "Percent Left") -Properties @("Name", "Toner.Cyan") -AutoRefresh -RefreshInterval 60 -BackgroundColor "#42d4f4" -FontColor "#080e1c" -Endpoint {
+                    $Printers | Sort-Object {$_.Toner.Cyan} | Select-Object -First 5 | Out-UDGridData
+                }
+            }
+            New-UDColumn -Size 3 {
+                New-UDGrid -Title "Lowest Magenta Toner" -Headers @("Name", "Percent Left") -Properties @("Name", "Toner.Magenta") -AutoRefresh -RefreshInterval 60 -BackgroundColor "#ce3ef2" -FontColor "#080e1c" -Endpoint {
+                    $Printers | Sort-Object {$_.Toner.Magenta} | Select-Object -First 5 | Out-UDGridData
+                }
+            }
+            New-UDColumn -Size 3 {
+                New-UDGrid -Title "Lowest Yellow Toner" -Headers @("Name", "Percent Left") -Properties @("Name", "Toner.Yellow") -AutoRefresh -RefreshInterval 60 -BackgroundColor "#f1d03e" -FontColor "#080e1c" -Endpoint {
+                    $Printers | Sort-Object {$_.Toner.Yellow} | Select-Object -First 5 | Out-UDGridData
+                }
+            }
+        }
+
         New-UDRow {
             foreach ($Printer in $Printers) {
                 New-UDColumn -Size 3 {
