@@ -11,6 +11,11 @@ The SNMP endpoints should be standard across most printers. However, your millag
 **Verified Working Printers**
 * HP M553 Color Printers
 
+# Requirements
+
+* **UniversalDashboard Licence** - UniversalDashboard requires a licence in order to run your dashboard. On first run, you will be prompted to enter a licence, or an email so a trial licence can be provided to you. More information on the licencing can be found on the [UniversalDashboard Website](https://poshtools.com/buy-powershell-pro-tools/universal-dashboard/). 
+* Windows 8.1 / Windows Server 2012 R2
+* PowerShell v5+
 
 # Config
 
